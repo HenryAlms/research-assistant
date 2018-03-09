@@ -1,0 +1,26 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "Chrome extension to help organize sources while researching",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HenryAlms/research-assistant.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HenryAlms/research-assistant/issues"
+  },
+  "homepage": "https://github.com/HenryAlms/research-assistant#readme",
+  "dependencies": {
+    "boostrap": "^2.0.0",
+    "typescript": "^2.7.2"
+  },
+  "devDependencies": {
+    "firebase": "^4.9.0"
+  }
+}
