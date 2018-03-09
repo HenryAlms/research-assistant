@@ -30,7 +30,9 @@ export class Source {
     }
 
     createProjectElement():HTMLElement {
-        return HTMLElement;
+        let newE = document.createElement("div");
+        newE.innerText = "Hello";
+        return newE;
     }
 
     createSourceElement():HTMLElement {

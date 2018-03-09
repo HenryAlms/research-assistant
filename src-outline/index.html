@@ -5,21 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>    
 </head>
 <body>
     <div>
-        <div>
-            Header
-        </div>
-        <div>
-            Outline
+        <div id="popup">
             <div>
-                Paragraph
+                <form id="logIn">
+                    <input type="text">Username</input>
+                    <input type="password">Password</input>
+                </form>
+            </div>
+            <div id="header">
+                Header
+                <div class="btn-toolbar" data-toggle="buttons">
+                    <div class="btn-group">
+                        <label class="btn btn-default"><input id="newP" type="radio" name="actions" value="New Project">New Project</input></label>
+                        <!-- <label class="btn btn-default"><input type="radio" name="actions" value="circle">Circle</input></label>
+                        <label class="btn btn-default"><input type="radio" name="actions" value="triangle">Triangle</input></label> -->
+                    </div>
+                </div>
+            </div>
+            <div>
+                Outline
                 <div>
-                    Source
+                    Paragraph
+                    <div>
+                        Source
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="build/index.js"></script>
 </body>
 </html>

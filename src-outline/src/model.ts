@@ -4,7 +4,6 @@ import {Observer} from './observer';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
-import 'firebase/firestore';
 
 const config:Object = {
   apiKey: "AIzaSyDeLU3RM4euNLdTEmJEylZWwpuby8npAac",
@@ -16,15 +15,27 @@ const config:Object = {
 };
 
 export class Model {
-  protected fBase:firebase;
-  protected fStore:any;
-  protected sList:Source[];
-  protected observers:Observer[];
+  protected fBase:any;
+  protected sList:Source[] = [];
+  protected observers:Observer[] = [];
+
+  protected fbUser:string; //sets the user query to make sure user can only access here.
+  protected projQuery:string;
 
   constructor() {
     this.fBase = firebase.initializeApp(config);
-    this.fStore = this.fBase.firestore();
-    this.sList = [];
+    this.fbUser = "";
+    this.projQuery = this.fbUser + "";
+  }
+
+  newObserver(obsv:Observer) {
+    this.observers.push(obsv);
+  }
+
+  removeObserver(obsv:Observer) {
+    //remove Observer
+    //let index = this.observers.indexOf(obsv);
+    //splice
   }
 
   getSources():Source[] {
@@ -33,14 +44,17 @@ export class Model {
 
   getSourceAt():Source {
     //return specific source
+    return this.sList[0];
   }
 
   getProjects():String[] {
     //return collection of projects
+    return this.fBase.snapshot();
   }
 
   getProjectAt():String {
     //return specific project
+    return this.fBase.snapshot()[0];
   }
 
   notifyAll():void {
