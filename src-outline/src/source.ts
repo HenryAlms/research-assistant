@@ -18,16 +18,16 @@ export class Source {
     //     //update type with given value
     // }
 
-    createSource(eType:string, name:string) {
-        let newElement;
-        if(eType === "project") {
-            newElement = this.createProjectElement();
-        } else {
-            newElement = this.createSourceElement();
-        }
+    // createSource(eType:string, name:string) {
+    //     let newElement;
+    //     if(eType === "project") {
+    //         newElement = this.createProjectElement(name);
+    //     } else {
+    //         newElement = this.createSourceElement(name);
+    //     }
 
-        //find place to put element;
-    }
+    //     //find place to put element;
+    // }
 
     createProjectElement(project:String):HTMLElement {
         let newE = document.createElement("div");
@@ -36,6 +36,19 @@ export class Source {
     }
 
     createSourceElement(source:Source):HTMLElement {
-        return HTMLElement;
+        let title:string = source.title;
+        let url:string = source.url;
+        let info:string = source.info;
+
+        let newSE = document.createElement("li");
+        let tag = document.createElement("a");
+
+        newSE.innerText = title;
+        //newSE.className = "tooltip";
+
+        tag.href = url;
+        newSE.appendChild(tag);
+
+        return newSE;
     }
 }

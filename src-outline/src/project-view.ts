@@ -8,11 +8,12 @@ export class ProjectView implements Observer {
     //HTML reference
     protected docRef:NodeList = document.getElementsByTagName("input"); //on input, check val. if project, update display
     
-    protected newProj:HTMLInputElement = document.getElementById("newP") as HTMLInputElement;
+
+    private newProj:HTMLInputElement; 
     private selectedProj:string;
 
     // protected logIn:HTMLElement = document.getElementById("logIn") Get user info from index.js
-    protected loginBtn:HTMLInputElement = document.getElementById("signIn") as HTMLInputElement;
+    protected loginBtn:HTMLInputElement;
     private user:string|null = null;
 
     //Refence current move
@@ -22,16 +23,30 @@ export class ProjectView implements Observer {
 
     constructor(private model:Model) {
         this.controller = new Controller(this, model);
-        this.newProj.addEventListener("click", this.addNewProject);
 
-        this.loginBtn.addEventListener("submit", this.verifyUser);
+        this.newProj = document.getElementById("newP") as HTMLInputElement;
+        this.newProj.addEventListener("click", () => this.addNewProject());
+
+        this.loginBtn = document.getElementById("signIn") as HTMLInputElement;
+        this.loginBtn.addEventListener("submit", () => this.verifyUser());
 
         //add event listeners for HTML manip
-        let projectButtons = $("input:radio");
-        this.selectedProj = projectButtons.val() as string;
-        projectButtons.change((e) => {
-            this.selectedProj = $(e).target.val() as string;
-        })
+        let buttons = document.getElementsByTagName("input:radio");
+
+        let btnArray = Array.prototype.slice.call(buttons,0);
+
+        this.selectedProj = "";
+
+        let projectButtons = btnArray.forEach((element:HTMLElement) => {
+            element.addEventListener("click", () => {
+                this.selectedProj = element.innerText as string; //might need to cahnge to vlaue ?????
+            })
+        });
+
+        // this.selectedProj = projectButtons.val() as string;
+        // projectButtons.change((e) => {
+        //     this.selectedProj = $(e).target.val() as string;
+        // })
         
         //add controller function
 
@@ -63,7 +78,7 @@ export class ProjectView implements Observer {
     }
 
     addNewProject() {
-        let projTitle = document.createElement("input; type:text");
+        let projTitle = document.createElement("input");
         // let title:string;
         // projTitle.addEventListener("input", (e) => {
         //     title = e.target.;
@@ -73,6 +88,7 @@ export class ProjectView implements Observer {
     }
 
     verifyUser() {
+        console.log("verify");
         let uRef = document.getElementById("uName");
         let pRef = document.getElementById("pWord");
         let email:string = "";
@@ -86,9 +102,12 @@ export class ProjectView implements Observer {
         } 
 
         if(auth) {
+            console.log("auth");
             this.user = email;
             let logInDisplay = document.getElementById("logIn") as HTMLDivElement;
             logInDisplay.remove();
+            let enable = document.getElementById("newP") as HTMLInputElement;
+            enable.disabled = false;
             this.display();
         }
     }
@@ -100,6 +119,4 @@ export class ProjectView implements Observer {
     changeProject() {
         //something
     }
-
-    //add event listener functions
 }

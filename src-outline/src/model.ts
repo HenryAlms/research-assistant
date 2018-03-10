@@ -20,7 +20,7 @@ export class Model {
   protected observers:Observer[] = [];
 
   protected fbUser:string|null = null; //sets the user query to make sure user can only access here.
-  protected projQuery:string;
+  protected projQuery:string = "";
 
   constructor() {
     this.fBase = firebase.initializeApp(config);

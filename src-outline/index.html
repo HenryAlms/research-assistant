@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
     <div>
@@ -14,31 +15,26 @@
                 <form>
                     <input id="uName" type="text" placeholder="email"></input>
                     <input id="pWord" type="password" placeholder="password"></input>
-                    <input id="singIn" type="submit" name="actions" value="Sign In"></input>              
+                    <input id="signIn" type="submit" name="actions" value="Sign In"></input>              
                 </form>
             </div>
             <div id="header">
                 <div class="btn-toolbar" data-toggle="buttons">
                     <div class="btn-group">
-                        <!-- <label class="btn btn-default"><input id="newP" type="radio" name="actions" value="New Project">New Project</input></label>
-                        <label class="btn btn-default"><input type="radio" name="actions" value="circle">Circle</input></label>
+                        <label id="" class="btn btn-default" disabled="true"><input id="newP" type="radio" name="actions" value="New Project">New Project</input></label>
+                        <!-- <label class="btn btn-default"><input type="radio" name="actions" value="circle">Circle</input></label>
                         <label class="btn btn-default"><input type="radio" name="actions" value="triangle">Triangle</input></label> -->
                     </div>
                 </div>
             </div>
             <div id="outline">
                 Outline
-                <div id="pTitle">
-                    Paragraph
-                    <div id="Source">
-                        Source
-                    </div>
+                <div id="sTitle">
+                    Source
                 </div>
             </div>
         </div>
     </div>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-    <script> var exports = {}; </script>
-    <script src="build/index.js">  </script>
+    <script src="build/bundle.js"></script>
 </body>
 </html>

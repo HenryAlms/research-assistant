@@ -7,5 +7,3 @@ import {ProjectController} from './projectControl';
 let model = new Model();
 let projectView = new ProjectView(model);
 let projectControl = new ProjectController(projectView, model);
-
-//export = this;
