@@ -6,11 +6,14 @@ var ProjectView = /** @class */ (function () {
         var _this = this;
         this.model = model;
         //HTML reference
-        this.docRef = document.getElementsByName("input"); //on input, check val. if project, update display
+        this.docRef = document.getElementsByTagName("input"); //on input, check val. if project, update display
         this.newProj = document.getElementById("newP");
+        // protected logIn:HTMLElement = document.getElementById("logIn") Get user info from index.js
+        this.loginBtn = document.getElementById("signIn");
+        this.user = null;
         this.controller = new projectControl_1.ProjectController(this, model);
         this.newProj.addEventListener("click", this.addNewProject);
-        this.user = "";
+        this.loginBtn.addEventListener("submit", function (e) { _this.verifyUser(e); });
         //add event listeners for HTML manip
         var projectButtons = $("input:radio");
         this.selProj = projectButtons.val();
@@ -36,10 +39,23 @@ var ProjectView = /** @class */ (function () {
         this.newProj.insertAdjacentElement("afterend", projTitle);
         this.controller.addProject();
     };
-    ProjectView.prototype.verifyUser = function () {
-        //set user
-        //authentice FB user
-        //this.dispaly()
+    ProjectView.prototype.verifyUser = function (event) {
+        var uRef = document.getElementById("uName");
+        var pRef = document.getElementById("pWord");
+        var email = "";
+        var password = "";
+        var auth = false;
+        if (uRef && pRef) {
+            email = uRef.innerText;
+            password = pRef.innerText;
+            auth = this.controller.verifyUser(email, password);
+        }
+        if (auth) {
+            this.user = email;
+            this.display();
+            var logInDisplay = document.getElementById("logIn");
+            logInDisplay.remove();
+        }
     };
     ProjectView.prototype.changeProject = function () {
         //something
@@ -47,3 +63,4 @@ var ProjectView = /** @class */ (function () {
     return ProjectView;
 }());
 exports.ProjectView = ProjectView;
+//# sourceMappingURL=project-view.js.map

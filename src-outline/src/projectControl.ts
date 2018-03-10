@@ -16,7 +16,11 @@ export class ProjectController {
 
     addProject() {
         //addProject
-        
+
+    }
+
+    verifyUser(email:string, password:string):boolean {
+        return this.model.verifyUser(email, password);
     }
 
     updateSource() {

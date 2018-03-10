@@ -13,6 +13,9 @@ var ProjectController = /** @class */ (function () {
     ProjectController.prototype.addProject = function () {
         //addProject
     };
+    ProjectController.prototype.verifyUser = function (email, password) {
+        return this.model.verifyUser(email, password);
+    };
     ProjectController.prototype.updateSource = function () {
         //old source
         //new source info
@@ -23,3 +26,4 @@ var ProjectController = /** @class */ (function () {
     return ProjectController;
 }());
 exports.ProjectController = ProjectController;
+//# sourceMappingURL=projectControl.js.map

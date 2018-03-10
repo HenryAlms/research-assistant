@@ -18,7 +18,7 @@ export class Source {
     //     //update type with given value
     // }
 
-    createSource(eType:string) {
+    createSource(eType:string, name:string) {
         let newElement;
         if(eType === "project") {
             newElement = this.createProjectElement();
@@ -29,13 +29,13 @@ export class Source {
         //find place to put element;
     }
 
-    createProjectElement():HTMLElement {
+    createProjectElement(project:String):HTMLElement {
         let newE = document.createElement("div");
         newE.innerText = "Hello";
         return newE;
     }
 
-    createSourceElement():HTMLElement {
+    createSourceElement(source:Source):HTMLElement {
         return HTMLElement;
     }
 }

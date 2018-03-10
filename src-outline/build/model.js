@@ -22,6 +22,22 @@ var Model = /** @class */ (function () {
         this.fbUser = "";
         this.projQuery = this.fbUser + "";
     }
+    Model.prototype.verifyUser = function (email, password) {
+        app_1.default.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+            if (error.code === "auth/email-already-in-use") {
+                return false;
+            }
+            else if (error.code === "auth/invalid-email") {
+                app_1.default.auth().createUserWithEmailAndPassword(email, password);
+                return true;
+            }
+            else {
+                window.alert(error.message);
+                return false;
+            }
+        });
+        return true;
+    };
     Model.prototype.newObserver = function (obsv) {
         this.observers.push(obsv);
     };
@@ -59,3 +75,4 @@ var Model = /** @class */ (function () {
     return Model;
 }());
 exports.Model = Model;
+//# sourceMappingURL=model.js.map

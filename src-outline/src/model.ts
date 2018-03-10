@@ -19,13 +19,28 @@ export class Model {
   protected sList:Source[] = [];
   protected observers:Observer[] = [];
 
-  protected fbUser:string; //sets the user query to make sure user can only access here.
+  protected fbUser:string|null = null; //sets the user query to make sure user can only access here.
   protected projQuery:string;
 
   constructor() {
     this.fBase = firebase.initializeApp(config);
-    this.fbUser = "";
-    this.projQuery = this.fbUser + "";
+  }
+
+  verifyUser(email:string, password:string):boolean {
+    firebase.auth().signInWithEmailAndPassword(email, password).catch((error:any) => {
+      if(error.code === "auth/email-already-in-use") {
+        return false;
+      } else if (error.code === "auth/invalid-email") {
+        firebase.auth().createUserWithEmailAndPassword(email, password);
+        this.fbUser = "/users/user" + email;
+        return true;
+      } else {
+        window.alert(error.message);
+        return false;
+      }
+    });
+    this.fbUser = "/users/user" + email;
+    return true;
   }
 
   newObserver(obsv:Observer) {
@@ -38,7 +53,8 @@ export class Model {
     //splice
   }
 
-  getSources():Source[] {
+  getSources(dbRef:string):Source[] {
+    this.projQuery = this.fbUser + dbRef;
     return this.sList;
   }
 
