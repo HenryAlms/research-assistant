@@ -1,0 +1,42 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "Chrome extension to help organize sources while researching",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx webpack-dev-server --inline --open",
+    "build": "npx webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HenryAlms/research-assistant.git"
+  },
+  "author": "Henry Alms",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HenryAlms/research-assistant/issues"
+  },
+  "homepage": "https://github.com/HenryAlms/research-assistant#readme",
+  "dependencies": {
+    "@types/jquery": "^3.3.1",
+    "@types/node": "^9.4.7",
+    "firebase": "^4.9.0",
+    "jquery": "^3.3.1",
+    "nonce": "^1.0.4",
+    "scripts": "^0.1.0",
+    "source-map-loader": "^0.2.3",
+    "typescript": "^2.7.2",
+    "webpack-dev-server": "^3.1.1"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^4.0.1",
+    "source-map": "^0.7.2",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.11",
+    "@types/jquery": "^3.3.1",
+    "@types/node": "^9.4.7",
+    "source-map-loader": "^0.2.3",
+    "typescript": "^2.7.2",
+    "webpack-dev-server": "^3.1.1"
+  }
+}
